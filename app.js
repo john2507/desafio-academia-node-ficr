@@ -10,7 +10,7 @@ app.set('json spaces',4)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
-app.get('/api/curriculo', controllerApi)
+app.get('/api/curriculo/:name', controllerApi);
 
 app.listen(3333, ()=>{
     console.log('Servidor Rodando na port: 3333');
