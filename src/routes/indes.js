@@ -1,7 +1,9 @@
-module.exports = (app) => {
+const express = require('express');
+const router = express.Router()
 
-    app.get('/', (req, res) => {
+    router.get('/', (req, res) => {
         res.send('Pagina Inicial');
     });
 
-};
+
+module.exports = router
