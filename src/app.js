@@ -7,7 +7,7 @@ const controllerApi = require('./controllers/controllerApi')
 
 
 
-app.set('json spaces',4)
+app.set('json spaces', 4)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 

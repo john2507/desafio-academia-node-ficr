@@ -2,8 +2,6 @@ const apiGit = require('../services/serviceGit');
 
 const axios = require('axios');
 
-const _ = require('lodash')
-
 
 module.exports = async function get(req, res, next){
     
@@ -22,7 +20,7 @@ module.exports = async function get(req, res, next){
         let { data: repos } = await apiGit.get(`/users/john2507/repos`)
 
         
-        const apiFace = await axios.get(`https://graph.facebook.com/v5.0/me?fields=name%2Clast_name%2Caddress%2Cgender%2Cbirthday%2Cemail&access_token=EAAIlDuHv2RsBAM2RNTjzq3nN6uylsIsSNALdN1NPXtj67ZAwQmr0tXFBzDfga8p9wZBsGyEaqOJfNmcw9DTJeKbZCai9teCJhM5ptb1d0WBoZAP7XzPVV9DbGEVNUgOCHQLJsN8xW8dlrBVadHkGUwBiYwSIedSuJfiVyHDqusu0Y3Quid7XUZBfMx1ynZCPKY08Aqfo4dTgZDZD`);
+        const apiFace = await axios.get(`https://graph.facebook.com/v5.0/me?fields=name%2Clast_name%2Caddress%2Cgender%2Cbirthday%2Cemail&access_token=EAAIlDuHv2RsBAIEMHWk9DZACZB2QWtFaelD563i4uiKZADXtJDl40Pl9kNMsmXaki2HPGIVFx0NkD3JkpKzee5Xi0nZC7mOlGPkEm6KJilHIU1GVb5CMS1BbnH7nrbfDo1TWNDPSMAPPrfihrz0t0kZCYNO7RjOQArpo7bWZBAwRDv81aum3LAsJaBZClXIhZBJr5HZAv9ltKCqSTmBALH9znjyDogxIlPuJbC4LxkiWaegZDZD`);
 
         const { name, last_name, address,gender, birthday, email} = apiFace.data;
        
@@ -35,11 +33,11 @@ module.exports = async function get(req, res, next){
             email,
           };
     
-        repos.map(r => {
+        repos.map(repositorio => {
             repoDefault.push({
-                size: r.size,
-                name: r.name,
-                url: r.url,
+                size: repositorio.size,
+                name: repositorio.name,
+                url: repositorio.url,
             })
         })
         
@@ -47,7 +45,6 @@ module.exports = async function get(req, res, next){
             return b.size - a.size
         })
 
-        const repoArr = _.chunk(repoDefault, 3)
 
 
         return res.json({ facebook_profile:[profile],
@@ -56,7 +53,7 @@ module.exports = async function get(req, res, next){
             url: data.url,
             bio: data.bio,
             company: data.company,
-            repositorios: [...repoArr[0]],
+            repositorios: [repoDefault],
             
         }})
 
