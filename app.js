@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 // rotas 
 app.use('/', index);
-app.get('/api/curriculo/:name', controllerApi);
+app.get('/api/curriculo/', controllerApi);
 app.get('/api/face/', controllerface.show);
 
 app.listen(3333, ()=>{

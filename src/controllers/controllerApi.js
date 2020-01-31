@@ -4,18 +4,21 @@ const apiFace = require('../services/serviceFace');
 const _ = require('lodash')
 
 
-module.exports = async function get(req,res, next){
+module.exports = async function get(req, res, next){
     let repoDefault = [];
 
     try {
         
-        let { name } = req.params
-        let { data } = await apiGit.get(`/users/${name}`,{
+        //let { name } = req.params
+        let { data } = await apiGit.get('/users/john2507',{
 
             Authorizathion: "token d88b002b8e05cd582add1fb5fac730b1cafd3aa1"
+
         })
 
-        let { data: repos } = await apiGit.get(`/users/${name}/repos`)
+        let { data: repos } = await apiGit.get(`/users/john2507/repos`)
+
+        
 
         repos.map(r => {
             repoDefault.push({
@@ -24,7 +27,6 @@ module.exports = async function get(req,res, next){
                 url: r.url,
             })
         })
-
 
         repoDefault.sort((a, b) => {
             return b.size - a.size
