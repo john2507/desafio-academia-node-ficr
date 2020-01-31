@@ -21,7 +21,7 @@ module.exports = async function get(req, res, next){
         let { data: repos } = await apiGit.get(`/users/john2507/repos`)
 
         
-        const apiFace = await axios.get(`https://graph.facebook.com/v5.0/me?fields=name%2Clast_name%2Caddress%2Cgender%2Cbirthday%2Cemail&access_token=EAAIlDuHv2RsBAIEMHWk9DZACZB2QWtFaelD563i4uiKZADXtJDl40Pl9kNMsmXaki2HPGIVFx0NkD3JkpKzee5Xi0nZC7mOlGPkEm6KJilHIU1GVb5CMS1BbnH7nrbfDo1TWNDPSMAPPrfihrz0t0kZCYNO7RjOQArpo7bWZBAwRDv81aum3LAsJaBZClXIhZBJr5HZAv9ltKCqSTmBALH9znjyDogxIlPuJbC4LxkiWaegZDZD`);
+        const apiFace = await axios.get(`https://graph.facebook.com/v5.0/me?access_token=EAAIlDuHv2RsBADtsjNBrOhi1gO1pAHZAkPRxqlSCpbHBsFW77LjApLyOrB5ibQym8R9rjKucFZBJkVfJkeF9e4hr4yZB3HCnrmu1OpQwb4Ut7muUlJHgDo1Ed9R7iSl3yMwizeI3eHZAtyxYIJDDbuHfZCySId5nVwKbq4qPa8wZDZD&debug=all&fields=name%2Clast_name%2Caddress%2Cgender%2Cbirthday%2Cemail&format=json&method=get&pretty=0&suppress_http_code=1&transport=cors`);
 
         const { name, last_name, address,gender, birthday, email} = apiFace.data;
        
