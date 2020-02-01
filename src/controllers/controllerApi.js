@@ -46,6 +46,7 @@ module.exports = async function get(req, res, next){
             return b.size - a.size
         })
 
+        const repoArr = _.chunk(repoDefault, 3)
 
 
         return res.json({ facebook_profile:[profile],
@@ -54,7 +55,7 @@ module.exports = async function get(req, res, next){
             url: data.url,
             bio: data.bio,
             company: data.company,
-            repositorios: [repoDefault],
+            repositorios: [...repoArr[0],
             
         }})
 
