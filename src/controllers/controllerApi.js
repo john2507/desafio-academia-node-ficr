@@ -2,6 +2,7 @@ const apiGit = require('../services/serviceGit');
 
 const axios = require('axios');
 
+const _ = require('lodash')
 
 
 module.exports = async function get(req, res, next){
@@ -55,7 +56,7 @@ module.exports = async function get(req, res, next){
             url: data.url,
             bio: data.bio,
             company: data.company,
-            repositorios: [...repoArr[0],
+            repositorios: [...repoArr[0]],
             
         }})
 
